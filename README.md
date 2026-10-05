@@ -2,7 +2,7 @@
 
 Send build and deployment notifications with the [MailChannels Email API](https://docs.mailchannels.com/email-api/overview).
 
-This action is in development. Automated tests use simulated responses; live API validation and GitHub Marketplace publication are pending.
+This action is in development. Automated tests pass on Linux, macOS and Windows. A [live dry run](https://github.com/mailchannels/mailchannels-send-email-action/actions/runs/37376609924) returned HTTP 200 and validated outputs on October 5, 2026. Actual delivery has not been tested; GitHub Marketplace publication is pending.
 
 ## Setup
 

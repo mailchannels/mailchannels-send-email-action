@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 function run(status, extra = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'mailchannels-action-'));
@@ -13,7 +13,7 @@ function run(status, extra = {}) {
     const output = join(dir, 'output');
     writeFileSync(output, '');
     writeFileSync(preload, `globalThis.fetch = async () => new Response('private response', {status: ${status}});`);
-    const result = spawnSync(process.execPath, ['--import', preload, fileURLToPath(new URL('./index.js', import.meta.url))], {
+    const result = spawnSync(process.execPath, ['--import', pathToFileURL(preload).href, fileURLToPath(new URL('./index.js', import.meta.url))], {
       encoding: 'utf8', env: {
         ...process.env, INPUT_FROM: 'sender@example.com', INPUT_TO: 'recipient@example.com',
         INPUT_SUBJECT: 'private subject', INPUT_TEXT: 'private message', INPUT_HTML: '',

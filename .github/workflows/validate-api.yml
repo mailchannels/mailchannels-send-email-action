@@ -1,0 +1,38 @@
+name: Validate live Email API
+on:
+  workflow_dispatch:
+    inputs:
+      from:
+        description: Configured sender email address
+        required: true
+        type: string
+      to:
+        description: Allowed test recipient email address
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: ./
+        id: email
+        with:
+          api-key: ${{ secrets.MAILCHANNELS_API_KEY }}
+          from: ${{ inputs.from }}
+          to: ${{ inputs.to }}
+          subject: MailChannels GitHub Action validation
+          text: This is a dry-run validation. No email should be delivered.
+          html: '<p>This is a dry-run validation. No email should be delivered.</p>'
+          dry-run: 'true'
+      - name: Verify validation outputs
+        env:
+          STATUS: ${{ steps.email.outputs.status }}
+          HTTP_STATUS: ${{ steps.email.outputs.http-status }}
+        run: |
+          test "$STATUS" = validated
+          test "$HTTP_STATUS" = 200

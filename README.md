@@ -66,4 +66,6 @@ The action supports simple sender/recipient notifications and plain-text/HTML bo
 
 Use Node.js 24 and run `npm test`. There are no third-party runtime or test dependencies. Tests cover request payloads, validation, dry runs, errors, timeouts, secret masking and runner outputs without sending email.
 
+Maintainers can use the **Validate live Email API** workflow after setting the repository secret `MAILCHANNELS_API_KEY`. Supply a configured sender and an allowed test recipient. That workflow always uses dry-run mode and verifies the action reports HTTP 200 and `validated`; it does not test actual delivery.
+
 API behavior: [OpenAPI definition](https://docs.mailchannels.com/email-api.yaml). Account help: [MailChannels support](https://support.mailchannels.com/hc/en-us).

@@ -1,0 +1,40 @@
+name: MailChannels Send Email
+description: Send build and deployment notifications through the MailChannels Email API.
+branding:
+  icon: mail
+  color: blue
+inputs:
+  api-key:
+    description: MailChannels API key, supplied from a GitHub Actions secret.
+    required: true
+  from:
+    description: Bare sender email address on a configured sending domain.
+    required: true
+  to:
+    description: Comma-separated bare recipient email addresses.
+    required: true
+  subject:
+    description: Email subject.
+    required: true
+  text:
+    description: Plain-text message body. Provide text, html, or both.
+    required: false
+  html:
+    description: HTML message body. Provide text, html, or both.
+    required: false
+  dry-run:
+    description: Validate and render the message without sending it.
+    required: false
+    default: 'false'
+  timeout-seconds:
+    description: Request timeout between 1 and 120 seconds. Requests are not retried.
+    required: false
+    default: '30'
+outputs:
+  status:
+    description: accepted for a send request, or validated for a dry run. Acceptance is not delivery.
+  http-status:
+    description: Successful HTTP response code (202 for send or 200 for dry run).
+runs:
+  using: node24
+  main: index.js

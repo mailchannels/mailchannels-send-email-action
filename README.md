@@ -4,6 +4,12 @@ Send build and deployment notifications with the [MailChannels Email API](https:
 
 This action is in development. Automated tests pass on Linux, macOS and Windows. A [live dry run](https://github.com/mailchannels/mailchannels-send-email-action/actions/runs/37376609924) returned HTTP 200 and validated outputs on October 5, 2026. Actual delivery has not been tested; GitHub Marketplace publication is pending.
 
+## Support
+
+This project is supported by the MailChannels team on a best-effort basis. The best way to get support is to file an issue on GitHub: https://github.com/mailchannels/mailchannels-send-email-action/issues
+
+If you are a MailChannels customer and have a problem with the operation of the MailChannels service, you can get support at https://support.mailchannels.com/
+
 ## Setup
 
 Configure your account and sending domain using the [quickstart](https://docs.mailchannels.com/email-api/curl/quickstart). Store your API key in the repository or organization secret `MAILCHANNELS_API_KEY`. Keep the key out of workflow files and message content. Use trusted workflows with access to that secret.
@@ -68,4 +74,4 @@ Use Node.js 24 and run `npm test`. There are no third-party runtime or test depe
 
 Maintainers can use the **Validate live Email API** workflow after setting the repository secret `MAILCHANNELS_API_KEY`. Supply a configured sender and an allowed test recipient. That workflow always uses dry-run mode and verifies the action reports HTTP 200 and `validated`; it does not test actual delivery.
 
-API behavior: [OpenAPI definition](https://docs.mailchannels.com/email-api.yaml). Account help: [MailChannels support](https://support.mailchannels.com/hc/en-us).
+API behavior: [OpenAPI definition](https://docs.mailchannels.com/email-api.yaml).

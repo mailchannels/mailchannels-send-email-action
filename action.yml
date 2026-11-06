@@ -1,5 +1,5 @@
 name: MailChannels Send Email
-description: Send build and deployment notifications through the MailChannels Email API.
+description: Send email from GitHub Actions workflows, such as build and deployment notifications, through MailChannels Email API.
 branding:
   icon: mail
   color: blue

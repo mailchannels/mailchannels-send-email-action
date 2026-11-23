@@ -11,7 +11,7 @@ test('sends authenticated UTF-8 multipart content to the fixed API endpoint', as
     assert.equal(url, 'https://api.mailchannels.net/tx/v1/send');
     assert.equal(options.method, 'POST');
     assert.equal(options.redirect, 'error');
-    assert.deepEqual(options.headers, { 'Content-Type': 'application/json', 'X-Api-Key': 'test-secret' });
+    assert.deepEqual(options.headers, { 'Content-Type': 'application/json', 'X-Api-Key': 'test-secret', 'User-Agent': 'mailchannels-github-action/0.1.1' });
     assert.deepEqual(JSON.parse(options.body), {
       personalizations: [{ to: [{ email: 'one@example.com' }, { email: 'two@example.com' }] }],
       from: { email: 'sender@example.com' }, subject: 'Déployed ✓',

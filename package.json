@@ -1,6 +1,6 @@
 {
   "name": "mailchannels-send-email-action",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Send transactional email from GitHub Actions using the MailChannels Email API.",

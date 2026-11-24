@@ -1,4 +1,8 @@
+import pkg from './package.json' with { type: 'json' };
+
 const ENDPOINT = 'https://api.mailchannels.net/tx/v1/send';
+// Identifies this action's Email API traffic in usage reporting.
+export const USER_AGENT = `mailchannels-github-action/${pkg.version}`;
 
 function required(value, name) {
   if (typeof value !== 'string' || !value.trim()) throw new Error(`Missing required input: ${name}.`);
@@ -52,7 +56,7 @@ export async function send(inputs, fetchImpl = fetch) {
     response = await fetchImpl(request.url, {
       method: 'POST',
       redirect: 'error',
-      headers: { 'Content-Type': 'application/json', 'X-Api-Key': request.apiKey },
+      headers: { 'Content-Type': 'application/json', 'X-Api-Key': request.apiKey, 'User-Agent': USER_AGENT },
       body: JSON.stringify(request.body),
       signal: AbortSignal.timeout(request.timeout * 1000),
     });

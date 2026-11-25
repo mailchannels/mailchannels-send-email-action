@@ -1,8 +1,8 @@
 # MailChannels Send Email Action
 
-Send build and deployment notifications with the [MailChannels Email API](https://docs.mailchannels.com/email-api/overview).
+Send email from your GitHub Actions workflows, such as build and deployment notifications, through [MailChannels Email API](https://docs.mailchannels.com/email-api/overview). Every message is tracked, so you can see deliveries, bounces and complaints, and bounced addresses are suppressed automatically. Start free with 100 emails a day.
 
-This action is in development. Automated tests pass on Linux, macOS and Windows. A [live dry run](https://github.com/mailchannels/mailchannels-send-email-action/actions/runs/37376609924) returned HTTP 200 and validated outputs on October 5, 2026. Actual delivery has not been tested; GitHub Marketplace publication is pending.
+Version 0.1.0 is listed on [GitHub Marketplace](https://github.com/marketplace/actions/mailchannels-send-email). Automated tests pass on Linux, macOS and Windows. A [live dry run](https://github.com/mailchannels/mailchannels-send-email-action/actions/runs/37376609924) returned HTTP 200 and validated outputs on October 5, 2026. Actual delivery has not been tested.
 
 ## Support
 
